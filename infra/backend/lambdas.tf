@@ -102,9 +102,10 @@ resource "aws_lambda_function" "auth" {
       COGNITO_USER_POOL_ID     = local.cognito_user_pool_id
       COGNITO_CLIENT_ID        = local.cognito_client_id
       PASSKEY_TABLE            = aws_dynamodb_table.passkey_credentials.name
-      WEBAUTHN_RP_ID           = "localhost"
-      WEBAUTHN_RP_NAME         = "BIS3 Defense Dev"
-      WEBAUTHN_EXPECTED_ORIGIN = "http://localhost:5173"
+      WEBAUTHN_RP_ID           = local.env.webauthn_rp_id
+      WEBAUTHN_RP_NAME         = local.env.webauthn_rp_name
+      WEBAUTHN_EXPECTED_ORIGIN = local.env.webauthn_expected_origin
+      AWS_USE_FIPS_ENDPOINT    = local.env.aws_use_fips_endpoint
     }
   }
 
@@ -154,9 +155,10 @@ resource "aws_lambda_function" "admin" {
       COGNITO_USER_POOL_ID     = local.cognito_user_pool_id
       COGNITO_CLIENT_ID        = local.cognito_client_id
       PASSKEY_TABLE            = aws_dynamodb_table.passkey_credentials.name
-      WEBAUTHN_RP_ID           = "localhost"
-      WEBAUTHN_RP_NAME         = "BIS3 Defense Dev"
-      WEBAUTHN_EXPECTED_ORIGIN = "http://localhost:5173"
+      WEBAUTHN_RP_ID           = local.env.webauthn_rp_id
+      WEBAUTHN_RP_NAME         = local.env.webauthn_rp_name
+      WEBAUTHN_EXPECTED_ORIGIN = local.env.webauthn_expected_origin
+      AWS_USE_FIPS_ENDPOINT    = local.env.aws_use_fips_endpoint
     }
   }
 
